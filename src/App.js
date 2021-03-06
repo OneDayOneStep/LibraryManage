@@ -1,17 +1,40 @@
-import logo from './logo.svg';
 import './App.css';
+import { Component } from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Project LibraryManage init by author@Lee
-        </p>
-      </header>
-    </div>
-  );
+// router
+// import { BrowserRouter, Route } from 'react-router-dom'
+
+// pages
+// import user from "./views/user/main";
+// import picAdmin from "./views/picAdmin/main";
+// import admin from "./views/admin/main";
+
+// antd
+import { Layout } from 'antd';
+const { Header, Content, Footer } = Layout;
+
+
+export default class App extends Component {
+    render() {
+        return (
+            <Layout className="layout">
+                <Header>Header</Header>
+                <Content>Content</Content>
+                <Footer>Footer</Footer>
+            </Layout>
+        )
+    }
 }
 
-export default App;
+// function App() {
+//   return (
+//     <div className="App">
+//         <BrowserRouter>
+//             <Route path="/user" component={user} />
+//             <Route path="/picAdmin" component={picAdmin} />
+//             <Route path="/admin" component={admin} />
+//         </BrowserRouter>
+//     </div>
+//   );
+// }
+
