@@ -1,5 +1,5 @@
 import { Component } from "react";
-export default class main extends Component {
+export default class index extends Component {
     render() {
         return (<div>user page</div>)
     }
