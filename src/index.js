@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Axios from "axios";
 Component.prototype.Axios = Axios;
+Component.prototype.server = "http://library.networkteam.cn/";
 
 ReactDOM.render(
   <React.StrictMode>

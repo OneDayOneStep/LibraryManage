@@ -8,6 +8,7 @@ import {
     DesktopOutlined,
     BookOutlined
 } from '@ant-design/icons';
+import ck from "js-cookie";
 
 export default class Login extends Component {
     constructor(props) {
@@ -19,6 +20,7 @@ export default class Login extends Component {
             password: "",
             mail: ""
         };
+        ck.remove("menuIndex");
     }
     changeValue(which, e) {
         let updateValue = {};
