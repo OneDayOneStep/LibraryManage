@@ -1,6 +1,7 @@
 import { Component } from "react";
 import BookManage from "./child/BookManage";
 import Borrow from "./child/Borrow";
+import Order from "./child/Order";
 import UserManage from "./child/UserManage";
 
 export default class index extends Component {
@@ -22,6 +23,7 @@ export default class index extends Component {
             [
                 <BookManage userInfo={this.props.userInfo} height={this.props.height} />,
                 <Borrow userInfo={this.props.userInfo} height={this.props.height} />,
+                <Order userInfo={this.props.userInfo} height={this.props.height} />,
                 <UserManage userInfo={this.props.userInfo} height={this.props.height} />
             ][this.state.index]
         )

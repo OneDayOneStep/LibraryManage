@@ -1,6 +1,7 @@
 import { Component } from "react";
 import Books from "./child/Books";
 import Borrow from "./child/Borrow";
+import Order from "./child/Order";
 
 export default class index extends Component {
     constructor(props) {
@@ -21,6 +22,7 @@ export default class index extends Component {
             [
                 <Books userInfo={this.props.userInfo} height={this.props.height} />,
                 <Borrow userInfo={this.props.userInfo} height={this.props.height} />,
+                <Order userInfo={this.props.userInfo} height={this.props.height} />
             ][this.state.index]
         )
     }

@@ -30,9 +30,9 @@ export default class Home extends Component {
             updateUrl: "",
             addUrl: "",
             menus: [
-                ["图书管理", "借阅管理", "用户管理"], // 图书管理员
+                ["图书管理", "借阅管理", "预约管理", "用户管理"], // 图书管理员
                 ["图书管理员设置"], // 管理员
-                ["图书搜索", "借阅信息"] // 用户
+                ["图书搜索", "借阅信息", "预约信息"] // 用户
             ],
             menu: [],
             menuIndex: ck.get("menuIndex") || "0",

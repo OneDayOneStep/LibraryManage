@@ -15,7 +15,7 @@ export default class index extends Component {
             columns: [
                 {
                     title: '读者',
-                    dataIndex: 'id'
+                    dataIndex: 'name'
                 },
                 {
                     title: '书名',

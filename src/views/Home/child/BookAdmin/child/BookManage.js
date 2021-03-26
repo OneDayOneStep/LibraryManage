@@ -12,7 +12,8 @@ import {
     Col,
     Input,
     Select,
-    Tooltip
+    Tooltip,
+    Card
 } from 'antd';
 
 import {
@@ -21,7 +22,8 @@ import {
     AimOutlined,
     FileImageOutlined,
     InboxOutlined,
-    EnvironmentOutlined
+    EnvironmentOutlined,
+    AppstoreOutlined
 } from '@ant-design/icons';
 
 export default class index extends Component {
@@ -71,9 +73,9 @@ export default class index extends Component {
                 {
                     title: '操作',
                     fixed: "right",
-                    width: 250,
+                    width: 100,
                     render: (t, r) => (
-                        <Space size="middle">
+                        <Space size="small" direction="vertical">
                             <Button type="primary" onClick={this.openBorrowModal.bind(this, r)}>借阅</Button>
                             <Button type="primary" onClick={() => {
                                 this.setState(Object.assign({}, r, {
@@ -85,6 +87,7 @@ export default class index extends Component {
                             }}>修改</Button>
                             <Popconfirm
                                 title="确定删除该图书？"
+                                placement="left"
                                 onConfirm={this.deleteBook.bind(this, r)}
                                 okText="确定"
                                 cancelText="取消"
@@ -97,6 +100,7 @@ export default class index extends Component {
             ],
             bookList: [],
             loading: false,
+            cardMode: true,
             // modal
             isbn: "",
             bookname: "",
@@ -245,6 +249,20 @@ export default class index extends Component {
                     paddingBottom: "10px",
                     textAlign: "right"
                 }}>
+                    <Button icon={<AppstoreOutlined />}
+                            size="large"
+                            shape="circle"
+                            type={
+                                this.state.cardMode ? "primary" : ""
+                            }
+                            style={{
+                                float: "left"
+                            }}
+                            onClick={() => {
+                                this.setState({
+                                    cardMode: !this.state.cardMode,
+                                })}}
+                    />
                     <Button type="primary" icon={<PlusCircleOutlined />} size="large" onClick={() => {
                         this.setState({
                             isModalVisible: true,
@@ -265,7 +283,66 @@ export default class index extends Component {
                            dataSource={this.state.bookList}
                            rowKey={record => record.isbn}
                            scroll={{ x: 1000, y: this.props.height - 300 }}
+                           style={{
+                               display: this.state.cardMode ? "none" : "block"
+                           }}
                     />
+                    <div className="cardMode" style={{
+                        height: (this.props.height - 200) + "px",
+                        display: this.state.cardMode ? "block" : "none"
+                    }}>{
+                        this.state.bookList.map(item => (
+                            <Card
+                                hoverable
+                                key={item.isbn}
+                                style={{width: 200}}
+                                cover={
+                                    <img alt={item.bookname} src={this.server + "/" + item.image} />
+                                }
+                            >
+                                <div className="cardInfo">
+                                    <div style={{
+                                        fontSize: "16px",
+                                        marginBottom: "5px"
+                                    }}
+                                         title={ item.bookname }
+                                    >{ item.bookname }</div>
+                                    <div style={{
+                                        color: "#999"
+                                    }}>
+                                        <div>ISBN: { item.isbn }</div>
+                                        <div>在馆数：{ item.booknum }  借阅数: { item.borrownum }</div>
+                                        <div>位置: { item.place }</div>
+                                    </div>
+                                </div>
+                                <div className="controls">
+                                    <Space size="middle" direction="vertical">
+                                        <Button type="primary" onClick={this.openBorrowModal.bind(this, item)}>借阅</Button>
+                                        <Button type="primary" onClick={() => {
+                                            this.setState(Object.assign({}, item, {
+                                                isModalVisible: true,
+                                                file: null,
+                                                image: "",
+                                                isEdit: true
+                                            }))
+                                        }}>修改</Button>
+                                        <Button type="primary" danger
+                                                onClick={
+                                                    () => {
+                                                        Modal.confirm({
+                                                            content: "是否删除 - " + item.bookname,
+                                                            okText: "确定",
+                                                            cancelText: "取消",
+                                                            onOk: this.deleteBook.bind(this, item)
+                                                        })
+                                                    }
+                                                }
+                                        >删除</Button>
+                                    </Space>
+                                </div>
+                            </Card>
+                        ))
+                    }</div>
                 </Spin>
 
 

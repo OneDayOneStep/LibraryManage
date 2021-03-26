@@ -21,7 +21,7 @@ export default class index extends Component {
         this.state = {
             columns: [
                 {
-                    title: '图书用户',
+                    title: '读者用户名',
                     dataIndex: 'name'
                 },
                 {
