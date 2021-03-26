@@ -52,7 +52,7 @@ export default class index extends Component {
                         <Image
                             width={100}
                             alt="书籍图片"
-                            src={this.server + r.image}
+                            src={this.server + "/" + r.image}
                         />
                     )
                 },

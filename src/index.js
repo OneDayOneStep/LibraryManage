@@ -3,9 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Axios from "axios";
+import _Axios from "axios";
+
+let Axios = _Axios.create({
+    baseURL: process.env.NODE_ENV === "production"
+        ? "http://library.networkteam.cn"
+        : ""
+});
+
 Component.prototype.Axios = Axios;
-Component.prototype.server = "http://library.networkteam.cn/";
+Component.prototype.server = "http://library.networkteam.cn";
 
 ReactDOM.render(
   <React.StrictMode>

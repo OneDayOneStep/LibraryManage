@@ -97,7 +97,7 @@ export default class index extends Component {
                 } else {
                     message.error(r.data.message);
                 }
-                this.getBook();
+                this.getAdmin();
             })
             .catch(() => {
                 message.error("操作失败");

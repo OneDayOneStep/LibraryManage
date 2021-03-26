@@ -11,7 +11,7 @@ import Home from "./views/Home";
 export default class App extends Component {
     render() {
         return (
-            <BrowserRouter>
+            <BrowserRouter basename="/LM">
                 <Switch>
                     <Route path="/Home" exact component={Home}/>
                     <Route path="/Login" exact component={Login}/>
